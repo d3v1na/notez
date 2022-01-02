@@ -1,12 +1,18 @@
 import "./App.css";
 import Sidebar from "./Sidebar";
 import Main from "./Main";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import uuid from "react-uuid";
 
 function App() {
-    const [notes, setNotes] = useState([]);
+    const [notes, setNotes] = useState(
+        localStorage.notes ? JSON.parse(localStorage.notes) : []
+    );
     const [activeNote, setActiveNote] = useState(false);
+
+    useEffect(() => {
+      localStorage.setItem("notes", JSON.stringify(notes));
+    }, [notes]);
 
     function addNote() {
         const newNote = {
@@ -16,14 +22,15 @@ function App() {
             lastModified: Date.now(),
         };
         setNotes([newNote, ...notes]);
+        setActiveNote(newNote.id);
     }
 
-    function deleteNote(idToDelete) {
-        setNotes(notes.filter((note) => note.id !== idToDelete));
+    function deleteNote(noteId) {
+        setNotes(notes.filter((note) => note.id !== noteId));
     }
 
     function getActiveNote() {
-        return notes.findIndex((note) => note.id === activeNote);
+        return notes.find(({note}) => id === activeNote);
     }
 
     const updateNote = (updatedNote) => {

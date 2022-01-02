@@ -130,7 +130,7 @@ textarea {
 }
 
 /* Preview */
-/* .appMainNotePreview {
+.appMainNotePreview {
   border-top: 1px solid #9600ff;
   overflow-y: scroll;
   background: rgba(0, 0, 0, 0.02);
@@ -139,10 +139,10 @@ textarea {
 .previewTitle {
   padding: 25px 25px 0 25px;
   margin: 0;
-} */
+} 
 
-/* .markdownPreview {
+.markdownPreview {
   padding: 0 25px 25px 25px;
   font-size: 1rem;
   line-height: 2rem;
-} */
+} 
